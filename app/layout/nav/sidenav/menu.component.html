@@ -1,0 +1,79 @@
+               
+<ul class="nav nav-pills nav-stacked side-navigation">
+     <li *ngFor="let zadatak of meni; let idx = index; let frst = first" 
+         class="menu-list"
+         [class.active]="isSelected">
+         <a [routerLink]="[zadatak.URL_FORME]" (click)="onSelect()"> {{zadatak.NAZIV_ZAD}}</a>
+         <div *ngIf="isSelected">
+             
+         
+            <ul class="child-list">
+                <li *ngFor="let drugi of zadatak.DecaZadaci" class="menu-list">
+                    <a href="javascript:;" [routerLink]="[zadatak.URL_FORME]">{{drugi.ZAD_ID}} {{drugi.NAZIV_ZAD}}</a>
+                </li>
+            </ul>
+         </div>
+     </li>
+</ul>
+
+<!--<ul *ngFor="let zadatak of meni; let frst=first" [ngClass]="{nav: 'zadatak.Depth==1', 'nav-pills': 'zadatak.Depth==1', 'nav-stacked': 'zadatak.Depth==1', 'side-navigation': 'zadatak.Depth==1', 'child-list': 'zadatak.Depth!=1 && zadatak.depth!=4'}">
+    <li class="menu-list" [class.active]="frst"  [ngClass]="{active: isSelected}">
+        <a href="javascript:;" (click)="onSelect()" > {{zadatak.NAZIV_ZAD}}</a>
+        <meni-view [meni]="zadatak.DecaZadaci"></meni-view>
+    </li>
+</ul>-->
+
+<!--<ul class="nav nav-pills nav-stacked side-navigation">
+     <li *ngFor="let zadatak of meni; let idx = index; let frst = first" 
+         class="menu-list"
+         (click)="onSelect()"
+         [ngClass]="{active: isSelected}">
+         <a href="javascript:;" > {{zadatak.NAZIV_ZAD}}</a>
+         <div *ngIf="isSelected">
+            <ul class="child-list">
+                <li *ngFor="let drugi of zadatak.DecaZadaci" 
+                    class="menu-list" 
+                    [ngClass]="{active: isSelected}"
+                    (click)="onSelect()"
+                    [ngClass]="{active: isSelected}">
+                    <a href="javascript:;">{{drugi.ZAD_ID}} {{drugi.NAZIV_ZAD}}</a>
+                    <div *ngIf="isSelected">
+                        <ul class="child-list">
+                            <li *ngFor="let treci of drugi.DecaZadaci"
+                                class="menu-list" 
+                                [ngClass]="{active: isSelected}"
+                                (click)="onSelect()"
+                                [ngClass]="{active: isSelected}">
+                                <a href="javascript:;">{{treci.ZAD_ID}} {{treci.NAZIV_ZAD}}</a>
+                                <div *ngIf="isSelected">
+                                    <ul class="child-list">
+                                        <li *ngFor="let zad of treci.DecaZadaci">
+                                            <a href="javascript:;">{{zad.ZAD_ID}} {{zad.NAZIV_ZAD}}</a>
+                                        </li>
+                                    </ul>
+                                </div> 
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+         </div>
+     </li>
+</ul>-->
+<!--<ul>
+    <li *ngFor="let dir of directories">
+
+        <span class="iconButton" (click)="dir.toggle()">{{dir.getIcon()}}</span><input type="checkbox" [checked]="dir.checked" (click)="dir.check()" /> {{ dir.name }}
+
+        <div *ngIf="dir.expanded">
+
+            <ul>
+                <li *ngFor="let file of dir.files">{{file}}</li>
+            </ul>
+
+            <tree-view [directories]="dir.directories"></tree-view>
+
+        </div>
+
+    </li>
+</ul>-->

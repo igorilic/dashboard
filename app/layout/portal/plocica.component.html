@@ -1,0 +1,17 @@
+<div class="col-lg-3 col-sm-6" *ngFor="let zadatak of meni; let frs=first; let o=odd; let e=even">
+    <a href="" >
+        <section class="panel elipsis" [ngClass]="{purple: frs, white: o, green: e}">
+            <div class="symbol">
+                <i class="fa fa-send"></i>
+            </div>
+            <div class="value white">
+                <!--<h1 class="timer" data-from="0" data-to="320"
+                    data-speed="1000">
+                
+                </h1>-->
+            <h1>{{zadatak.NAZIV_ZAD}}</h1>
+                <p>{{zadatak.ZAD_ID}} {{zadatak.NAZIV_ZAD}}</p>
+            </div>
+        </section>
+    </a>
+</div>

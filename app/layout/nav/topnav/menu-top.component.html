@@ -1,0 +1,18 @@
+<ul class="col-sm-2 list-unstyled" *ngFor="let zadatak of meni">
+    <li>
+        <p class="title">{{zadatak.NAZIV_ZAD}}</p>
+        <ul class="list-unstyled">
+            <li *ngFor="let drugi of zadatak.DecaZadaci">
+                <a href="javascript:;"><i class="fa fa-angle-right"></i> {{drugi.NAZIV_ZAD}} </a>
+                
+                <ul>
+                    <li *ngFor="let treci of drugi.DecaZadaci">
+                        <a href="javascript:;"> {{treci.NAZIV_ZAD}} </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    
+    
+</ul>
