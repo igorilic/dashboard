@@ -9,12 +9,33 @@ import { SessionStorageService } from '../storage/session-storage.service';
 @Injectable()
 export class TestLoginService {
     url: string = 'app/assets/api/api.radnik.json';
-    constructor(private _http: Http) { }
+    private loggedIn: boolean = false;
+    
+    constructor(private _http: Http) {
+        this.loggedIn = !!localStorage.getItem('auth_token');
+    }
     testPostLogin(radnik: IRadnik): Observable<IRadnik> {
         return this._http.get(this.url)
             .map((res: Response) => res.json())
+            // .map(res => {
+            //     if (res.success) {
+            //         localStorage.setItem('auth_token', res.auth_token);
+            //         this.loggedIn = true;
+            //     }
+                
+            //     return res.success;
+            // })
             // .do((data: IRadnik) => console.log(JSON.stringify(data.VRSTA_ZADATAKA[0].DecaZadaci)))
             .catch(this.handleError); 
+    }
+    
+    logout(): void {
+        localStorage.removeItem('auth_token');
+        this.loggedIn = false;
+    }
+    
+    isLoggedIn(): boolean {
+        return this.loggedIn;
     }
     
     private handleError(error: any) {

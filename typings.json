@@ -2,7 +2,9 @@
   "globalDependencies": {
     "core-js": "registry:dt/core-js#0.0.0+20160317120654",
     "jasmine": "registry:dt/jasmine#2.2.0+20160505161446",
-    "node": "registry:dt/node#4.0.0+20160509154515"
+    "jquery": "registry:dt/jquery#1.10.0+20160417213236",
+    "node": "registry:dt/node#4.0.0+20160509154515",
+    "signalr": "registry:dt/signalr#2.2.0+20160509082439"
   },
   "dependencies": {
     "moment": "registry:npm/moment#2.10.5+20160211003958"

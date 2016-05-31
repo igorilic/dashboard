@@ -1,4 +1,4 @@
-               
+            
 <ul class="nav nav-pills nav-stacked side-navigation">
      <li *ngFor="let zadatak of meni; let idx = index; let frst = first" 
          class="menu-list"
@@ -9,11 +9,12 @@
          
             <ul class="child-list">
                 <li *ngFor="let drugi of zadatak.DecaZadaci" class="menu-list">
-                    <a href="javascript:;" [routerLink]="[zadatak.URL_FORME]">{{drugi.ZAD_ID}} {{drugi.NAZIV_ZAD}}</a>
+                    <a [routerLink]="[drugi.URL_FORME]">{{drugi.ZAD_ID}} {{drugi.NAZIV_ZAD}}</a>
                 </li>
             </ul>
          </div>
      </li>
+     
 </ul>
 
 <!--<ul *ngFor="let zadatak of meni; let frst=first" [ngClass]="{nav: 'zadatak.Depth==1', 'nav-pills': 'zadatak.Depth==1', 'nav-stacked': 'zadatak.Depth==1', 'side-navigation': 'zadatak.Depth==1', 'child-list': 'zadatak.Depth!=1 && zadatak.depth!=4'}">
@@ -25,15 +26,12 @@
 
 <!--<ul class="nav nav-pills nav-stacked side-navigation">
      <li *ngFor="let zadatak of meni; let idx = index; let frst = first" 
-         class="menu-list"
-         (click)="onSelect()"
-         [ngClass]="{active: isSelected}">
-         <a href="javascript:;" > {{zadatak.NAZIV_ZAD}}</a>
-         <div *ngIf="isSelected">
+         class="menu-list">
+         <a href="javascript:;" (click)="onSelect()"> {{zadatak.NAZIV_ZAD}}</a>
+         <div *ngIf="isSelected" [ngClass]="{active: isSelected}">
             <ul class="child-list">
                 <li *ngFor="let drugi of zadatak.DecaZadaci" 
                     class="menu-list" 
-                    [ngClass]="{active: isSelected}"
                     (click)="onSelect()"
                     [ngClass]="{active: isSelected}">
                     <a href="javascript:;">{{drugi.ZAD_ID}} {{drugi.NAZIV_ZAD}}</a>

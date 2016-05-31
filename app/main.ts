@@ -4,9 +4,11 @@ import { provide } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { FORM_PROVIDERS } from '@angular/common';
 import 'rxjs/Rx';
 
 bootstrap(AppComponent, [
     HTTP_PROVIDERS,
-    ROUTER_PROVIDERS
+    ROUTER_PROVIDERS,
+    FORM_PROVIDERS
 ]);

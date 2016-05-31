@@ -1,6 +1,6 @@
 // angular
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {RouteConfig, ROUTER_DIRECTIVES, Router, RouteData } from '@angular/router-deprecated';
+import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
 // servisi
 import { TestLoginService } from '../../shared/api/loginservice/test.login.service';
 import { RadniciService } from '../../shared/api/radnici/radnici.service';
@@ -8,6 +8,7 @@ import { RadniciService } from '../../shared/api/radnici/radnici.service';
 import { NaslovnaComponent } from './naslovna.component';
 import { SidenavComponent } from '../nav/sidenav/sidenav.component';
 import { TopnavComponent } from '../nav/topnav/topnav.component';
+import { Sif10101Component } from '../../zadaci/100/sif10101.component';
 // modeli
 import { IMeni } from '../../shared/modeli/meni.interface';
 import { IRadnik } from '../../shared/modeli/radnik';
@@ -17,10 +18,12 @@ import { IRadnik } from '../../shared/modeli/radnik';
     templateUrl: 'portal.component.html',
     encapsulation: ViewEncapsulation.Emulated,
     directives: [ROUTER_DIRECTIVES, NaslovnaComponent, SidenavComponent, TopnavComponent],
-    providers: [TestLoginService, RadniciService]
+    providers: [TestLoginService, RadniciService, Sif10101Component]
 })
 @RouteConfig([
-    {path: '/', component: NaslovnaComponent, as: 'Naslovna', useAsDefault: true, data: {_meni: true} }
+    {path: '/', component: NaslovnaComponent, name: 'Naslovna', useAsDefault: true},
+    {path: '/10101', component: Sif10101Component, name: 'Sif10101'}
+    
 ])
 export class PortalComponent implements OnInit {
     meni: IMeni[];
@@ -28,9 +31,9 @@ export class PortalComponent implements OnInit {
     errorMsg: string;
     constructor(private _router: Router,
                 private _testLogin: TestLoginService,
-                private _radniciService: RadniciService,
-                data: RouteData) {
-                    this.meni = data.get('_meni')
+                private _radniciService: RadniciService)
+                 {
+                    
                  }
     
     ngOnInit() {

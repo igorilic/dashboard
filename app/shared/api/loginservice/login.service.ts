@@ -14,7 +14,9 @@ export class LoginService {
     private BASE_API_URL: string = 'http://localhost:5000/api/';
     private RADNIK_API_URL: string = 'login';
     constructor(private _http: Http,
-                private _sessionStorage: SessionStorageService) { }
+                private _sessionStorage: SessionStorageService) { 
+                    
+                }
     
     /**
      * Metod koji salje pristupne podatke radnika i vraca objekat
@@ -25,12 +27,15 @@ export class LoginService {
         let headers = new Headers({ 
             'Content-Type': 'application/json'
         });
+        
         let options = new RequestOptions({headers: headers});
         let url = this.BASE_API_URL + this.RADNIK_API_URL;
         return this._http.post(url, body, options)
                    .map(this.extractData)
                    .do((data: JSON) => this.setRadnikToSessionStorage(data))
                    .catch(this.handleError);
+                   
+                   
         
     }
     

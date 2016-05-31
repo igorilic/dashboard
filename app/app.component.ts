@@ -1,6 +1,6 @@
 // angular
 import {Component} from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { RouteConfig, ROUTER_DIRECTIVES, Router } from '@angular/router-deprecated';
 // servisi
 // komponente
 import { PortalComponent } from './layout/portal/portal.component';
@@ -14,7 +14,8 @@ import { LoginComponent } from './layout/login/login.component';
     styleUrls:['app.component.css']
 })
 @RouteConfig([
-    {path: '/', component: LoginComponent, as: 'Login'},
+    {path: '/', component: LoginComponent, name: 'Login', useAsDefault: true},
     {path: '/dashboard/...', component: PortalComponent, name: 'Dashboard'}
 ])
-export class AppComponent { }
+export class AppComponent {
+}
