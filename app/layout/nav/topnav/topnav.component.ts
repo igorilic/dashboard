@@ -8,7 +8,7 @@ import { IMeni } from '../../../shared/modeli/meni.interface';
 import { IRadnik } from '../../../shared/modeli/radnik';
 import { MenuTopComponent } from './menu-top.component';
 import { ProfilComponent } from './profil.component';
-import { TestLoginService } from '../../../shared/api/loginservice/test.login.service';
+// import { TestLoginService } from '../../../shared/api/loginservice/test.login.service';
 
 
 
@@ -28,13 +28,13 @@ export class TopnavComponent implements OnInit {
    
     @Input() meni: IMeni[];
     @Input() radnik: IRadnik;
-    rad: IRadnik;
+    
     
     constructor(private _router: Router
-                ) { this.rad = this.radnik }
+                ) { }
    
     ngOnInit() {
-        console.log(JSON.stringify(this.rad));
+        
     }
 
 }

@@ -74,8 +74,8 @@ Author: Mosaddek Hossain
 62. slick carousel
 
 */
-
-
+/*@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700&subset=latin,latin-ext,cyrillic);*/
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,900,700&subset=latin,cyrillic,latin-ext);
 @import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
 @import url(//fonts.googleapis.com/css?family=Abel);
 
@@ -90,6 +90,7 @@ Author: Mosaddek Hossain
 
 body {
     font-family: 'Source Sans Pro', sans-serif;
+    /*font-family: 'Roboto', sans-serif;*/
     color: #323232;
     line-height: 20px;
     overflow-x: hidden;
@@ -102,12 +103,13 @@ body {
 
 
 input,select,textarea {
+    /*font-family: 'Roboto', sans-serif;*/
     font-family: 'Source Sans Pro', sans-serif;
     color: #767676;
 }
 
 a {
-    /*color: #91918E;*/
+    color: #91918E;
 }
 
 a:focus, a:active, a:hover {
@@ -120,6 +122,7 @@ a:focus, a:active, a:hover {
 }
 
 h1,h2,h3,h4,h5 {
+    /*font-family: 'Roboto', sans-serif;*/
     font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -1106,6 +1109,7 @@ a.btn-view-all {
 }
 .yamm .yamm-content {
     padding: 20px;
+    
 }
 .yamm .dropdown.yamm-fw .dropdown-menu {
     left: 0;
@@ -1242,6 +1246,10 @@ a.btn-view-all {
 .wide-full {
     width: 77%;
     /*width: auto;*/
+}
+
+.providno {
+    opacity: 0.9;
 }
 
 /*-----------------------

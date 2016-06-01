@@ -1,7 +1,7 @@
-// import { IPolje } from './polje';
+import { IPolje } from './polje';
 export interface IZadatak {
 
-  Polja: any[],
+  Polja: IPolje[],
   ZAD_ID: number;
   NADREDJENI_ZAD: number;
   NAZIV_ZAD: string;

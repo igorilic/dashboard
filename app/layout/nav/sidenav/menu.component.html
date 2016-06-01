@@ -36,11 +36,33 @@
        </li>
 </ul>-->
 
-<ul *ngFor="let zadatak of meni; let frst=first; let i=index" [ngClass]="{'nav nav-pills nav-stacked side-navigation': zadatak.ZAD_ID < 5, 'child-list': zadatak.ZAD_ID > 4}">
-    <li class="menu-list" [class.active]="frst"  [ngClass]="{'active': selectedIdx == i}">
-        <a href="javascript:;" (click)="selectItem(i)" > {{zadatak.NAZIV_ZAD}}</a>
+<ul class="nav nav-pills nav-stacked side-navigation">
+    <li class="menu-list" *ngFor="let zadatak of meni; let frst=first; let i=index"  
+        [ngClass]="{'active': selectedIdx == i}">
+        <a [routerLink]="[zadatak.URL_FORME]" (click)="selectItem(i)" >{{zadatak.NAZIV_ZAD}}</a>
         <div *ngIf="selectedIdx == i">
-            <meni-view [meni]="zadatak.DecaZadaci"></meni-view>
+            <ul class="child-list" *ngIf="zadatak.DecaZadaci != null">
+                <li class="menu-list" *ngFor="let drugi of zadatak.DecaZadaci; let iDrugi = index;"
+                    [ngClass]="{'active': selectedIdxDrugi == iDrugi}">
+                    <a [routerLink]="[drugi.URL_FORME]" (click)="selectItemDrugi(iDrugi)" >{{drugi.ZAD_ID}} {{drugi.NAZIV_ZAD}}</a>
+                    <div *ngIf="selectedIdxDrugi == iDrugi">
+                        <ul class="child-list" *ngIf="drugi.DecaZadaci != null">
+                            <li class="menu-list" *ngFor="let treci of drugi.DecaZadaci; let iTreci = index;"
+                                [ngClass]="{'active': selectedIdxTreci == iTreci}">
+                                <a [routerLink]="[treci.URL_FORME]" (click)="selectItemTreci(iTreci)" >{{treci.ZAD_ID}} {{treci.NAZIV_ZAD}}</a>
+                                <div *ngIf="selectedIdxTreci == iTreci">
+                                    <ul class="child-list" *ngIf="treci.DecaZadaci != null">
+                                        <li class="menu-list" *ngFor="let cetvrti of treci.DecaZadaci">
+                                            <a [routerLink]="[cetvrti.URL_FORME]" >{{cetvrti.ZAD_ID}} {{cetvrti.NAZIV_ZAD}}</a>
+                                        </li>
+                                    </ul>
+                                </div>                          
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                
+            </ul>
         </div>
         
     </li>

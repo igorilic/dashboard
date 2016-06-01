@@ -38,7 +38,7 @@ export interface IRadnik {
     SIF_TIP_RADNIKA?: number; 
     SIFRA_RADNIKA: string; 
     STATUS?: number; 
-    TAJNA_SIFRA: string; 
+    TAJNA_SIFRA?: string; 
     TwoFactorEnabled?: boolean;
     TRANSAKCIJA?: string[];
     TRANSAKCIJANavigation?: string[];

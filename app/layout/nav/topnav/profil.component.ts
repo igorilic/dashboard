@@ -9,7 +9,7 @@ import { IRadnik } from '../../../shared/modeli/radnik';
     providers:[]
 })
 export class ProfilComponent implements OnInit {
-   
+    
     constructor() {
        
      }

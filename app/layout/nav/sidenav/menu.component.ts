@@ -14,24 +14,25 @@ import { Sif10101Component } from '../../../zadaci/100/sif10101.component';
     
 ])
 export class MenuComponent implements OnInit {
-    isSelected: boolean = false;
     selectedIdx: number = 0;
-    selectedDrugi: number = 0;
+    selectedIdxDrugi: number = 0;
+    selectedIdxTreci: number = 0;
+    
     @Input() meni: IMeni[];
     constructor() { }
-    onSelect(): void {
-        
-        this.isSelected = !this.isSelected;
-    }
-    
     
     ngOnInit() { }
     
     selectItem(index: number): void {
         this.selectedIdx = index;
     }
-    
-    selectDrugi(index: number): void {
-        this.selectedDrugi = index;
+    selectItemDrugi(index: number): void {
+        this.selectedIdxDrugi = index;
     }
+    
+    selectItemTreci(index: number): void {
+        this.selectedIdxTreci = index;
+    }
+    
+    
 }

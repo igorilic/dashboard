@@ -9,6 +9,7 @@ import { NaslovnaComponent } from './naslovna.component';
 import { SidenavComponent } from '../nav/sidenav/sidenav.component';
 import { TopnavComponent } from '../nav/topnav/topnav.component';
 import { Sif10101Component } from '../../zadaci/100/sif10101.component';
+import { SifarnikComponent } from '../../shared/sifarnici/sifarnik.component';
 // modeli
 import { IMeni } from '../../shared/modeli/meni.interface';
 import { IRadnik } from '../../shared/modeli/radnik';
@@ -17,12 +18,13 @@ import { IRadnik } from '../../shared/modeli/radnik';
     selector: 'dashboard',
     templateUrl: 'portal.component.html',
     encapsulation: ViewEncapsulation.Emulated,
-    directives: [ROUTER_DIRECTIVES, NaslovnaComponent, SidenavComponent, TopnavComponent],
+    directives: [ROUTER_DIRECTIVES, NaslovnaComponent, SidenavComponent, TopnavComponent, SifarnikComponent],
     providers: [TestLoginService, RadniciService, Sif10101Component]
 })
 @RouteConfig([
     {path: '/', component: NaslovnaComponent, name: 'Naslovna', useAsDefault: true},
-    {path: '/10101', component: Sif10101Component, name: 'Sif10101'}
+    {path: '/10101', component: Sif10101Component, name: 'Sif10101'},
+    {path: '/sifarnici', component: SifarnikComponent, name: 'Sifarnik'}
     
 ])
 export class PortalComponent implements OnInit {
@@ -33,24 +35,22 @@ export class PortalComponent implements OnInit {
                 private _testLogin: TestLoginService,
                 private _radniciService: RadniciService)
                  {
-                    
+                    this.radnik = {
+                        SIFRA_RADNIKA: '685',
+                        TAJNA_SIFRA: '685',
+                        IME_RADNIKA: 'Mirjana',
+                        PREZIME_RADNIKA: 'Kelecevic'
+                    }
                  }
     
     ngOnInit() {
-        // this._radniciService.getRadnik(685)
-        //                 .subscribe(
-        //                     radnik => this.radnik = radnik,
-        //                     error => this.errorMsg = error
-        //                 );
-        
+
         this._testLogin.testPostLogin({SIFRA_RADNIKA: '685', TAJNA_SIFRA: '685'})
             .subscribe(
-                radnik => {
-                    this.meni = radnik.VRSTA_ZADATAKA[0].DecaZadaci;
-                    this.radnik = radnik;
-                },
-                // radnik => this.radnik = radnik,
-                error => this.errorMsg = error
+                radnik => this.radnik = radnik,
+                error => this.errorMsg = error,
+                () => this.meni = this.radnik.VRSTA_ZADATAKA[0].DecaZadaci
+                
             );
         
     }
