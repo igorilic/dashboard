@@ -3,13 +3,13 @@ import { IMeni } from '../../../shared/modeli/meni.interface';
 import { IZadatak } from '../../../shared/modeli/zadatak';
 import {RouteConfig, ROUTER_DIRECTIVES, RouteParams, Router } from '@angular/router-deprecated';
 import { NgClass } from '@angular/common';
-import { Sif10101Component } from '../../../zadaci/100/sif10101.component';
+// import { Sif10101Component } from '../../../zadaci/100/sif10101.component';
 
 @Component({
     moduleId: module.id,
     selector: 'meni-view',
     templateUrl: 'menu.component.html',
-    directives: [MenuComponent, NgClass, ROUTER_DIRECTIVES, Sif10101Component],
+    directives: [MenuComponent, NgClass, ROUTER_DIRECTIVES],
     styles:['.spusteno { display: block;}', '.dignuto {display: none;}']
 })
 @RouteConfig([

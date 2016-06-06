@@ -32,12 +32,7 @@ export class ZadaciService {
                    .catch(this.handleError);
     }
     
-    // getPolja(zadId: number, obrazacId: number): Observable<IPolje[]> {
-    //     return this._http
-    //                .get(this.baseUrl + zadId.toString() + '/obrasci/' + obrazacId.toString())
-    //                .map(this.extractData)
-    //                .catch(this.handleError); 
-    // }
+
     /**
      * Pomocne funkcije
      */

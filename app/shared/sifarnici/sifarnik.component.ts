@@ -1,5 +1,5 @@
 // angular
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FORM_DIRECTIVES } from '@angular/common';
 import { RouteParams, Router } from '@angular/router-deprecated';
 // modeli
@@ -10,13 +10,13 @@ import { ISadrzaj } from '../modeli/sadrzaj';
 import { ZadaciService } from '../api/zadaci/zadaci.service';
 // komponente
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
-import { SelectComponent } from '../select/select.component';
+
 
 @Component({
     moduleId: module.id,
     selector: 'sifarnik',
     templateUrl: 'sifarnik.component.html',
-    directives: [BreadcrumbComponent, FORM_DIRECTIVES, SelectComponent],
+    directives: [BreadcrumbComponent, FORM_DIRECTIVES],
     providers: [ZadaciService]
 })
 export class SifarnikComponent implements OnInit {
