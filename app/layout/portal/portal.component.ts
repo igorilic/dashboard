@@ -8,8 +8,9 @@ import { RadniciService } from '../../shared/api/radnici/radnici.service';
 import { NaslovnaComponent } from './naslovna.component';
 import { SidenavComponent } from '../nav/sidenav/sidenav.component';
 import { TopnavComponent } from '../nav/topnav/topnav.component';
-import { Sif10101Component } from '../../zadaci/100/sif10101.component';
+// import { Sif10101Component } from '../../zadaci/100/sif10101.component';
 import { SifarnikComponent } from '../../shared/sifarnici/sifarnik.component';
+import { GrupeComponent } from '../grupe/grupe.component';
 // modeli
 import { IMeni } from '../../shared/modeli/meni.interface';
 import { IRadnik } from '../../shared/modeli/radnik';
@@ -18,13 +19,19 @@ import { IRadnik } from '../../shared/modeli/radnik';
     selector: 'dashboard',
     templateUrl: 'portal.component.html',
     encapsulation: ViewEncapsulation.Emulated,
-    directives: [ROUTER_DIRECTIVES, NaslovnaComponent, SidenavComponent, TopnavComponent, SifarnikComponent],
-    providers: [TestLoginService, RadniciService, Sif10101Component]
+    directives: [ROUTER_DIRECTIVES,
+                 NaslovnaComponent, 
+                 SidenavComponent, 
+                 TopnavComponent, 
+                 SifarnikComponent, 
+                 GrupeComponent],
+    providers: [TestLoginService, RadniciService]
 })
 @RouteConfig([
     {path: '/', component: NaslovnaComponent, name: 'Naslovna', useAsDefault: true},
-    {path: '/10101', component: Sif10101Component, name: 'Sif10101'},
-    {path: '/sifarnici', component: SifarnikComponent, name: 'Sifarnik'}
+    // {path: '/10101', component: Sif10101Component, name: 'Sif10101'},
+    {path: '/sifarnik/:id', component: SifarnikComponent, name: 'Sifarnik'},
+    {path: '/grupe/:id', component: GrupeComponent, name: 'Grupe'}
     
 ])
 export class PortalComponent implements OnInit {

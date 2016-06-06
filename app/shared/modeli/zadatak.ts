@@ -1,7 +1,9 @@
 import { IPolje } from './polje';
+import { ISadrzaj } from './sadrzaj';
 export interface IZadatak {
-
-  Polja: IPolje[],
+  SadrzajiRefTabela?: ISadrzaj[];
+  Polja?: IPolje[];
+  Breadcrumb: string[];
   ZAD_ID: number;
   NADREDJENI_ZAD: number;
   NAZIV_ZAD: string;

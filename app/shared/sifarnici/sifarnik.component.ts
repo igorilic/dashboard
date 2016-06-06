@@ -1,47 +1,75 @@
 // angular
 import { Component, OnInit } from '@angular/core';
 import { FORM_DIRECTIVES } from '@angular/common';
+import { RouteParams, Router } from '@angular/router-deprecated';
 // modeli
 import { IZadatak } from '../modeli/zadatak';
 import { IPolje } from '../modeli/polje';
+import { ISadrzaj } from '../modeli/sadrzaj';
 // servisi
 import { ZadaciService } from '../api/zadaci/zadaci.service';
 // komponente
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
+import { SelectComponent } from '../select/select.component';
 
 @Component({
     moduleId: module.id,
     selector: 'sifarnik',
     templateUrl: 'sifarnik.component.html',
-    directives: [BreadcrumbComponent, FORM_DIRECTIVES],
+    directives: [BreadcrumbComponent, FORM_DIRECTIVES, SelectComponent],
     providers: [ZadaciService]
 })
 export class SifarnikComponent implements OnInit {
     zadaci: IZadatak[];
     zadatak: IZadatak;
+    tooltip: string;
     polja: IPolje[];
-    hleb: string[] = ['Portal', 'Šifarnici', 'Opšti šifarnici', 'Šifarnik opština'];
+    sadrzajRefTabela: any[];
+    sadrzaj: any[] = [];
+    hleb: string[];
     title: string;
     
     test: string = 'test';
-    constructor(private zadaciService: ZadaciService) {
-        
+    constructor(private zadaciService: ZadaciService,
+                private routeParams: RouteParams,
+                private router: Router) {
     }
 
     ngOnInit() {
-        
+        let id = +this.routeParams.get('id');
         this.zadaciService
-            .getZadatak(10301)
+            .getZadatak(id)
             .subscribe(
-                zadatak => this.polja = zadatak.Polja,
+                zadatak => this.zadatak = zadatak,
                 error => console.log(error),
-                // () => console.log(JSON.stringify(this.polja)),
-                () => this.title = this.polja[0].NAZIV_ZAD
+                () => { 
+                    this.polja = this.zadatak.Polja;
+                    this.zadatak.SadrzajiRefTabela[0].Sadrzaj.forEach((red: any) => {
+                           let redNiz = Object.keys(red).map(x => red[x]);
+                        // za potrebe testiranja    
+                        // console.log(redNiz);
+                           this.sadrzaj.push(redNiz);
+                       });                                                 
+                    this.title = this.zadatak.NAZIV_ZAD;
+                    this.tooltip = this.zadatak.TOOLTIP;
+                    this.hleb = this.zadatak.Breadcrumb;
+                    console.log(this.sadrzaj);
+                }
             );
+        
+        
+    }
+    
+    gotoNaslovna() {
+        this.router.navigate(['Naslovna']);
     }
     
     onSubmit(form: any): void {
-        console.log('Uneli ste sledece vrednosti: ', form);
+        // TODO POST
+        
+        console.log(form);
+        let formniz = Object.keys(form).map(x => form[x]);
+        this.sadrzaj.push(formniz);
     }
 
 }

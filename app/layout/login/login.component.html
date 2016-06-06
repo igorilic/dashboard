@@ -8,12 +8,13 @@
           <form class="form-signin" role="form">
               <div class="login-wrap">
                   <input type="text" [(ngModel)]="sifra" class="form-control" placeholder="Šifra radnika" autofocus>
-                  <input type="password" [(ngModel)]="password" class="form-control" placeholder="Tajna šifra">
+                  <input type="password" [(ngModel)]="password" class="form-control" placeholder="Tajna šifra"
+                         (keydown.enter)="gotoDashboard()">
                   <button class="btn btn-lg btn-success btn-block" type="button" (click)="gotoDashboard()">Prijava</button>
 			 </div>
 
               <!-- Modal -->
-              <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="forgotPass" class="modal fade">
+              <!--<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="forgotPass" class="modal fade">
                   <div class="modal-dialog">
                       <div class="modal-content">
                           <div class="modal-header">
@@ -31,7 +32,7 @@
                           </div>
                       </div>
                   </div>
-              </div>
+              </div>-->
               <!-- modal -->
 
           </form>

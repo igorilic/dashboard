@@ -10,7 +10,6 @@ import { SignalRClient } from './signalr-client.service';
 export class SmartCardAuth {
 
     constructor(private signalrClient: SignalRClient) {
-        
     }
 
 }

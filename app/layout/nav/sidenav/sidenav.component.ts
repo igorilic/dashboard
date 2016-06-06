@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 // import { ACCORDION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
-import { Router, RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { Router, RouteConfig, ROUTER_DIRECTIVES, RouteParams } from '@angular/router-deprecated';
 import { IMeni } from '../../../shared/modeli/meni.interface';
 import { IRadnik } from '../../../shared/modeli/radnik';
 import { TestLoginService } from '../../../shared/api/loginservice/test.login.service';
@@ -18,20 +18,12 @@ import { MenuComponent } from './menu.component';
         ]
 })
 export class SidenavComponent implements OnInit {
-    @Input() meni: IMeni[]
+    @Input() meni: IMeni[];
     
-    // radnik: IRadnik;
-    // errorMsg: string;
-    constructor(private _router: Router,
-                private _testLogin: TestLoginService) { }
+    private selectedId: number;
     
-    ngOnInit() { 
-        // this._testLogin.testPostLogin({SIFRA_RADNIKA: '685', TAJNA_SIFRA: '685'})
-        //     .subscribe(
-        //         radnik => this.meni = radnik.VRSTA_ZADATAKA[0].DecaZadaci,
-        //         error => this.errorMsg = error
-        //     );
-        
-    }
+    constructor(private _router: Router) { }
+    
+    ngOnInit() { }
 
 }

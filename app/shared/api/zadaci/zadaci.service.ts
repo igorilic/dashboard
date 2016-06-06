@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { IZadatak } from '../../modeli/zadatak';
+import { IPolje } from '../../modeli/polje';
 
 @Injectable()
 export class ZadaciService {
@@ -30,6 +31,13 @@ export class ZadaciService {
                    .map(this.extractData)
                    .catch(this.handleError);
     }
+    
+    // getPolja(zadId: number, obrazacId: number): Observable<IPolje[]> {
+    //     return this._http
+    //                .get(this.baseUrl + zadId.toString() + '/obrasci/' + obrazacId.toString())
+    //                .map(this.extractData)
+    //                .catch(this.handleError); 
+    // }
     /**
      * Pomocne funkcije
      */
