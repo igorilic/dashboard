@@ -7,7 +7,7 @@ export interface IRadnik {
     
     
     
-    
+     
     ID_ULOGE?: number;
     NAZIV_ULOGE?: string;
     VRSTA_ZADATAKA?: IMeni[];

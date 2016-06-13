@@ -19,7 +19,7 @@ export class PlocicaComponent implements OnInit {
                 private router: Router) {
         this.selectedId = +routeParams.get('id');
      }
-
+ 
     ngOnInit() { }
     
     //////////////

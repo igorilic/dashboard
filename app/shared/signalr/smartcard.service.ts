@@ -2,43 +2,50 @@ import { Injectable } from '@angular/core';
 import { SignalRClient } from './signalr-client.service';
 
 // import {Dispatcher} from 'tkhyn/aurelia-flux';
+// Flux bi trebalo da se zameni sa rxjs
 // import {CardEventStore} from './cardEventStore';
+//
 //import {Router} from 'aurelia-router';
+// router iz angulara
 
 
 @Injectable()
 export class SmartCardAuth {
+  hubName: string;
+  hubCardInsertedFunc: string;
+  hubCardRemovedFunc: string;
+  cardInserted: boolean;
+  cardConnected: boolean;
+  cardRemoved: boolean;
+  cardError: boolean;
+  hub: any;
+  userName: string;
+  cardNumber: string;
+  pinCode: string;
+  proxy: any;
 
-    constructor(private signalrClient: SignalRClient) {
-    }
+  // constructor(auth,signalr,dispatcher,ces)
+  constructor(private signalrClient: SignalRClient) {
+    this.hubName = 'GemCardHub';
+    this.hubCardInsertedFunc = 'cardInserted';
+    this.hubCardRemovedFunc = 'cardRemoved';
+    this.cardInserted = false;
+    this.cardConnected = false;
+    this.cardRemoved = true;
+    this.cardError = false;
+    this.hub = this.signalrClient;    
+    // this.auth = auth;
+    // this.myrouter = null;
+    this.userName = null;
+    this.cardNumber = null;
+    this.pinCode = null;
+    this.proxy = null;
+    // this.dispatcher = dispatcher;
+  }
 
-}
-
-
-
-
-
-
-  // constructor(auth,signalr,dispatcher,ces) {
-
-  //   this.hubName = 'GemCardHub';
-  //   this.hubCardInsertedFunc = 'cardInserted';
-  //   this.hubCardRemovedFunc = 'cardRemoved';
-  //   this.cardInserted = false;
-  //   this.cardConnected = false;
-  //   this.cardRemoved = true;
-  //   this.cardError = false;
-  //   this.hub =   signalr;    
-  //   this.auth = auth;
-  //   this.myrouter = null;
-  //   this.userName = null;
-  //   this.cardNumber = null;
-  //   this.pinCode = null;
-  //   this.proxy = null;
-  //   this.dispatcher = dispatcher;
-  // }
 
   start() {
+
     this.hub.createHub(this.hubName);
     this.hub.setCallback(this.hubName, this.hubCardRemovedFunc, this.handleCardRemoved);
     this.hub.setCallback(this.hubName, this.hubCardInsertedFunc, this.handleCardInserted);
@@ -46,18 +53,18 @@ export class SmartCardAuth {
       //alert('konektovao se!');
       console.log ('Successfully CONNECTED on hub.');
       this.proxy = this.hub.getHubProxy('GemCardHub');
-      this.proxy.invoke('InitCard').done((data) => {
+      this.proxy.invoke('InitCard').done((data: any) => {
               console.log ('Invocation of InitCard succeeded');
               this.cardError = false;
               if(data === true)
                 return true;
-          }).fail(function (error) {
+          }).fail(function (error: any) {
               this.cardError = true;
               console.log('Invocation of InitCard failed. Error: ' + error);
           });
 
     });
-    this.proxy = this.hub.getHubProxy('GemCardHub');
+    //this.proxy = this.hub.getHubProxy('GemCardHub');
   }
 
   SelectCard()
@@ -77,12 +84,12 @@ export class SmartCardAuth {
   {
     try {
       this.proxy.invoke('CardConnected')
-      .done((data) => {
+      .done((data:any) => {
               console.log ('Invocation of CardConnected succeeded');
               this.cardError = false;
               if(data === true)
                 return true;
-          }).fail(function (error) {
+          }).fail(function (error:any) {
             this.cardError = true;
             console.log('Invocation of CardConnected failed. Error: ' + error);
           });
@@ -108,12 +115,12 @@ export class SmartCardAuth {
   }
 
   InitCard(){
-    this.proxy.invoke('InitCard').done((data) => {
+    this.proxy.invoke('InitCard').done((data:any) => {
             console.log ('Invocation of InitCard succeeded');
             this.cardError = false;
             if(data === true)
               return true;
-        }).fail(function (error) {
+        }).fail(function (error:any) {
             this.cardError = true;
             console.log('Invocation of InitCard failed. Error: ' + error);
         });
@@ -136,13 +143,7 @@ export class SmartCardAuth {
   {
     try {
        return this.proxy.invoke('CardConnect');
-      // .done(() => {
-      //         console.log ('Invocation of CardConnect succeeded');
-      //         this.cardError = false;
-      //     }).fail(function (error) {
-      //       this.cardError = true;
-      //       console.log('Invocation of CardConnect failed. Error: ' + error);
-      //     });
+   
     } catch (err) {
       this.cardError = true;
       console.log('Invocation of CardConnect failed. Error: ' + err);
@@ -217,7 +218,7 @@ export class SmartCardAuth {
       this.userName = null;
       this.cardNumber = null;
       this.pinCode = null;
-      this.dispatcher.dispatch('CardRemoved');
+      // this.dispatcher.dispatch('CardRemoved');
       //this.myrouter.navigate("#/login");
     }
 ///  };
@@ -229,13 +230,13 @@ export class SmartCardAuth {
       this.userName = null;
       this.cardNumber = null;
       this.pinCode = null;
-      this.dispatcher.dispatch('CardInserted');
+      // this.dispatcher.dispatch('CardInserted');
       //this.myrouter.navigate("#/login");
     }
 //  };
 //
-  async stop() {
-    await his.hub.stop(this.hubName, this.hubFunc, this.handleNotifications);
-  }
+  // stop() {
+  //   this.hub.stop(this.hubName, this.hubFunc, this.handleNotifications);
+  // }
 
 }

@@ -3,6 +3,7 @@ import { PlocicaComponent } from './plocica.component';
 import { IMeni } from '../../shared/modeli/meni.interface';
 import { IRadnik } from '../../shared/modeli/radnik';
 import { TestLoginService } from '../../shared/api/loginservice/test.login.service';
+import { ToggleMenuService } from '../nav/topnav/toggle.service';
 
 @Component({
     moduleId: module.id,
@@ -10,7 +11,7 @@ import { TestLoginService } from '../../shared/api/loginservice/test.login.servi
     templateUrl: 'naslovna.component.html',
     directives: [PlocicaComponent],
     styles: ['.state-overview {padding-left: 20px;}'],
-    providers: [TestLoginService]
+    providers: [TestLoginService, ToggleMenuService]
 })
 export class NaslovnaComponent implements OnInit {
     title: string = 'Naslovna';
@@ -18,8 +19,11 @@ export class NaslovnaComponent implements OnInit {
     $meni: IMeni[];
     @Input() meni: IMeni[];
     errorMsg: string;
-    constructor(private _testLogin: TestLoginService) { }
+    constructor(private _testLogin: TestLoginService,
+                private _toggleSer: ToggleMenuService) {
 
+                }
+                
     ngOnInit() {
         this._testLogin.testPostLogin({SIFRA_RADNIKA: '685', TAJNA_SIFRA: '685'})
             .subscribe(

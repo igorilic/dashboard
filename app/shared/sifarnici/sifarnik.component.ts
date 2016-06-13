@@ -10,7 +10,7 @@ import { ISadrzaj } from '../modeli/sadrzaj';
 import { ZadaciService } from '../api/zadaci/zadaci.service';
 // komponente
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
-
+ 
 
 @Component({
     moduleId: module.id,

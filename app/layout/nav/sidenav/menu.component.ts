@@ -9,16 +9,15 @@ import { NgClass } from '@angular/common';
     moduleId: module.id,
     selector: 'meni-view',
     templateUrl: 'menu.component.html',
-    directives: [MenuComponent, NgClass, ROUTER_DIRECTIVES],
-    styles:['.spusteno { display: block;}', '.dignuto {display: none;}']
+    directives: [MenuComponent, NgClass, ROUTER_DIRECTIVES]
 })
 @RouteConfig([
     
 ])
 export class MenuComponent implements OnInit {
-    selectedIdx: number = 0;
-    selectedIdxDrugi: number = 0;
-    selectedIdxTreci: number = 0;
+    selectedIdx: number = -1;
+    selectedIdxDrugi: number = -1;
+    selectedIdxTreci: number = -1;
     private selectedId: number;
     @Input() meni: IMeni[];
     
@@ -27,7 +26,7 @@ export class MenuComponent implements OnInit {
     }
     
     ngOnInit() { }
-    
+     
     /////////////
     
     isSelected(zadatak: IZadatak) {
@@ -37,14 +36,27 @@ export class MenuComponent implements OnInit {
         this._router.navigate(['Sifarnik', {id: zadatak.ZAD_ID}]);
     }
     selectItem(index: number): void {
-        this.selectedIdx = index;
+        if (this.selectedIdx != index) {
+            this.selectedIdx = index;
+        } else {
+            this.selectedIdx = -1;
+        }
+        
     }
     selectItemDrugi(index: number): void {
-        this.selectedIdxDrugi = index;
+        if (this.selectedIdxDrugi != index) {
+            this.selectedIdxDrugi = index;
+        } else {
+            this.selectedIdxDrugi = -1;
+        }
     }
     
     selectItemTreci(index: number): void {
-        this.selectedIdxTreci = index;
+        if (this.selectedIdxTreci != index) {
+            this.selectedIdxTreci = index;
+        } else {
+            this.selectedIdxTreci = -1;
+        }
     }
     
     

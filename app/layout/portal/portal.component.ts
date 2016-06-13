@@ -51,7 +51,6 @@ export class PortalComponent implements OnInit {
                  }
     
     ngOnInit() {
-
         this._testLogin.testPostLogin({SIFRA_RADNIKA: '685', TAJNA_SIFRA: '685'})
             .subscribe(
                 radnik => this.radnik = radnik,

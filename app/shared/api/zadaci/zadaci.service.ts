@@ -21,6 +21,7 @@ export class ZadaciService {
                    .catch(this.handleError);
     }
     
+    
     /**
      * GET zadatak/:id
      * daje jedan zadatak na osnovu ZAD_ID

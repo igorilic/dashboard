@@ -1,6 +1,6 @@
 //import $ from 'jquery';
 //make sure to run jspm install npm:ms-signalr-client
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
 import 'ms-signalr-client';
 import { Injectable } from '@angular/core';
 
@@ -15,7 +15,7 @@ export class SignalRClient {
 
   createHub(hubName:string) {
     if(!this.connection) {
-      this.connection = $.hubConnection('http://joca:8898');  //{hubBaseUrl}
+      this.connection = $.hubConnection('http://localhost:8898/');  //{hubBaseUrl}
       //The following can be used to pass certain data to the hub on connection such as user id.
       //this.connection.qs = { UserId: '{SomeUserId}', Token: '{SomeUserToken}' };
     }

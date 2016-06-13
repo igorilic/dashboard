@@ -4,31 +4,43 @@
           
       </h2>
       <breadcrumb [hleb]="hleb"></breadcrumb>
-     
+
   </div>
   <!-- page head end-->
   
   <div class="wrapper" style="overflow: scroll;">
      <div class="row">
+        
+             
+
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-            <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" class="form">
-                <div class="form-group row" *ngFor="let polje of polja; let i = index;">
-                    <label class="col-lg-4 col-sm-2 col-md-4">{{polje.NAZIV_POLJA}}</label>
-                    <div class="col-lg-8 col-sm-10 col-md-8">
-                        <input type="text" class="form-control" [placeholder]="polje.REF_POLJE"
-                                
-                                ngControl="{{polje.REF_POLJE}}">
+            <section>
+               <header class="panel-heading">
+                    Unos novog reda
+                    <span class="tools pull-right">
+                        <a href="javascript:;" class="fa fa-repeat box-refresh"></a>
+                        <a class="t-close fa fa-times" href="javascript:;"></a>
+                    </span>
+                </header>
+                <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" class="form">
+                    <div class="form-group row" *ngFor="let polje of polja; let i = index;">
+                        <label class="col-lg-4 col-sm-2 col-md-4">{{polje.NAZIV_POLJA}}</label>
+                        <div class="col-lg-8 col-sm-10 col-md-8">
+                            <input type="text" class="form-control" [placeholder]="polje.REF_POLJE"
+                                    
+                                    ngControl="{{polje.REF_POLJE}}">
+                        </div>
                     </div>
-                </div>
-                
-                <div class="col-lg-offset-9 col-sm-offset-9 col-md-offset-10 col-md-2 col-sm-2 col-lg-3">
-                    <button type="submit" class="btn btn-success">Potvrdi</button>
-                </div>
-            </form>
+                    
+                    <div class="col-lg-offset-9 col-sm-offset-9 col-md-offset-10 col-md-2 col-sm-2 col-lg-3">
+                        <button type="submit" class="btn btn-success">Potvrdi</button>
+                    </div>
+                </form>
+            </section>
         </div>
-     
+        
         <div class="col-md-8 col-sm-6 col-xs-12">
-            <section class="panel">
+            <section>
                 <header class="panel-heading">
                     {{title}}
                     <span class="tools pull-right">

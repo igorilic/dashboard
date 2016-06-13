@@ -19,127 +19,31 @@
                 <!--logo and logo icon end-->
 
                 <!--toggle button start-->
-                <a class="toggle-btn"><i class="fa fa-outdent" style="padding-top: 6px;"></i></a>
+               <toggle-menu></toggle-menu>
                 <!--toggle button end-->
 
                 <!--mega menu start-->
                 <div id="navbar-collapse-1" class="navbar-collapse collapse yamm mega-menu">
                     <ul class="nav navbar-nav">
                         <!-- Classic list -->
-                        <li class="dropdown"><a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle">Zadaci <b
-                                class=" fa fa-angle-down"></b></a>
+                        <li class="dropdown" *ngFor="let zadatak of meni">
+                            <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle">
+                                {{zadatak.NAZIV_ZAD}} 
+                                <b class=" fa fa-angle-down"></b>
+                            </a>
                             <ul class="dropdown-menu wide-full providno">
                                 <li>
                                     <!-- Content container to add padding -->
                                     <div class="yamm-content">
                                         <div class="row">
-                                            <menu-top [meni]="meni"></menu-top>
-                                            <!--<ul class="col-sm-2 list-unstyled">
-                                                <li>
-                                                    <p class="title">Description</p>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <span class="d-title">2015 Mordern Design</span>
-                                                        <span class="d-desk">Description goes here</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <span class="d-title">Amaging Dashboard</span>
-                                                        <span class="d-desk">Build with BS3</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <span class="d-title">3500+ Satisfied Client</span>
-                                                        <span class="d-desk">Max 5 star rating</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <span class="d-title">Easy to Cutomize</span>
-                                                        <span class="d-desk">Very easy to use</span>
-                                                    </a>
-                                                </li>
-
-                                            </ul>
-                                            <ul class="col-sm-2 list-unstyled">
-                                                <li>
-                                                    <p class="title">Iconic</p>
-                                                </li>
-                                                <li><a href="javascript:;"><i class="fa fa-anchor text-muted"></i> Anchor Icon </a>
-                                                </li>
-                                                <li><a href="javascript:;"><i class="fa fa-desktop text-muted"></i> Desktop Icon </a>
-                                                </li>
-                                                <li><a href="javascript:;"><i class="fa fa-laptop text-muted"></i> Laptop Icon</a>
-                                                </li>
-                                                <li><a href="javascript:;"><i class="fa fa-automobile text-muted"></i> Automobile Icon </a>
-                                                </li>
-                                                <li><a href="javascript:;"><i class="fa fa-briefcase text-muted"></i> Briefcase Icon</a>
-                                                </li>
-                                            </ul>
-                                            <ul class="col-sm-3 list-unstyled">
-                                                <li>
-                                                    <p class="title">Image + Description</p>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <img class="icon-img" src="img/mega-menu/mega_icon1.png" alt="" />
-                                                                <span class="icon-desk">
-                                                                                        <span class="d-title">Full Flat Concept</span>
-                                                                <span class="d-desk">Description goes here</span>
-                                                                </span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <img class="icon-img" src="img/mega-menu/mega_icon2.png" alt="" />
-                                                                <span class="icon-desk">
-                                                                                        <span class="d-title">Amaging Dashboard</span>
-                                                                <span class="d-desk">Build with BS3</span>
-                                                                </span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <img class="icon-img" src="img/mega-menu/mega_icon3.png" alt="" />
-                                                                <span class="icon-desk">
-                                                                                        <span class="d-title">3500+ Satisfied Client</span>
-                                                                <span class="d-desk">Max 5 star rating</span>
-                                                                </span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <img class="icon-img" src="img/mega-menu/mega_icon4.png" alt="" />
-                                                                <span class="icon-desk">
-                                                                                        <span class="d-title">Easy to Cutomize</span>
-                                                                <span class="d-desk">Very easy to use</span>
-                                                                </span>
-                                                    </a>
-                                                </li>
-
-                                            </ul>
-                                            <ul class="col-sm-3 list-unstyled custom-nav-img">
-                                                <li>
-                                                    <p class="title">Custom</p>
-                                                </li>
-                                                <li>
-
-                                                    <p class="desk">Ipsum dolor sit amet, consectetur adipisicing elit.
-                                                        Asperiores aut, autem commodi cumque illum pariatur
-                                                        vero. Ad adipisci animi delectus</p>
-                                                </li>
-                                                <li><span class="mega-bg"></span></li>
-                                            </ul>-->
+                                            <menu-top [meni]="zadatak.DecaZadaci"></menu-top>
+                                            
 
                                         </div>
                                     </div>
                                 </li>
                             </ul>
                         </li>
-
                     </ul>
                 </div>
                 <!--mega menu end-->

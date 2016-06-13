@@ -268,6 +268,7 @@ h1,h2,h3,h4,h5 {
 }
 
 
+
 .sidebar-left-info {
     padding: 0px;
 }
@@ -444,8 +445,9 @@ h1,h2,h3,h4,h5 {
 }
 
 .sidebar-collapsed .sidebar-left {
-    width: 52px;
-    top: 52px;
+    display: none;
+    /*width: 52px;
+    top: 52px;*/
 }
 
 .sidebar-collapsed .sidebar-left-info {
@@ -1105,10 +1107,10 @@ a.btn-view-all {
     position: relative;
 }
 .yamm .dropdown-menu {
-    left: auto;
+    left: 0;
 }
 .yamm .yamm-content {
-    padding: 20px;
+    padding: 5px;
     
 }
 .yamm .dropdown.yamm-fw .dropdown-menu {

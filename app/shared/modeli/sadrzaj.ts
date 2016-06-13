@@ -1,4 +1,4 @@
-export interface ISadrzaj {
+export interface ISadrzaj { 
     Naziv: string;
     Sadrzaj: any[];
 }

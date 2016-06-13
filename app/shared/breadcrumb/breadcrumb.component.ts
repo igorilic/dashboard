@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OpaqueToken } from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -8,7 +8,5 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BreadcrumbComponent implements OnInit {
     @Input() hleb: string[];
     constructor() { }
-
     ngOnInit() { }
-
 }

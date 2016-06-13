@@ -1,47 +1,11 @@
             
-<!--<ul class="nav nav-pills nav-stacked side-navigation">
-     <li *ngFor="let zadatak of meni; let idx = index; let frst = first" 
-         class="menu-list"
-         [ngClass]="{'active': selectedIdx == idx}">
-         <a [routerLink]="[zadatak.URL_FORME]" (click)="selectItem(idx)"> {{zadatak.NAZIV_ZAD}}</a>
-         <div *ngIf="selectedIdx == idx">
-             
-         
-            <ul class="child-list">
-                <li *ngFor="let drugi of zadatak.DecaZadaci" class="menu-list">
-                    <a [routerLink]="[drugi.URL_FORME]">{{drugi.ZAD_ID}} {{drugi.NAZIV_ZAD}}</a>
-                </li>
-            </ul>
-         </div>
-     </li>
-     
-</ul>-->
-
-<!--<ul class="nav nav-pills nav-stacked side-navigation">
-    <li class="menu-list" 
-        *ngFor="let zadatak of meni; let idx = index; let frst = first" 
-        [ngClass]="{'active': selectedIdx == idx}">
-        <a [routerLink]="[zadatak.URL_FORME]" (click)="selectItem(idx)"> {{zadatak.NAZIV_ZAD}}</a>
-        
-        <div *ngIf="selectedIdx == idx">
-            <meni-view [meni]="zadatak.DecaZadaci"></meni-view>
-        </div>
-    </li>
-</ul>-->
-
-<!--<ul>
-      <li  *ngFor="let item of menu;let i = index"
-       class="menu-list" [ngClass]="{'active': selectedIdx == i}">
-        <a (click)="selectItem(i)"> {{item.name}}</a>
-       </li>
-</ul>-->
 
 <ul class="nav nav-pills nav-stacked side-navigation">
-    <li class="menu-list" *ngFor="let zadatak of meni; let frst=first; let i=index"  
+    <li class="menu-list" *ngFor="let zadatak of meni; let i=index"  
         [ngClass]="{'active': selectedIdx == i}">
         <a [routerLink]="[zadatak.URL_FORME]" (click)="selectItem(i)" >{{zadatak.NAZIV_ZAD}}</a>
         <div *ngIf="selectedIdx == i">
-            <ul class="child-list" *ngIf="zadatak.DecaZadaci != null">
+            <ul class="child-list" *ngIf="zadatak.DecaZadaci != null" >
                 <li class="menu-list" *ngFor="let drugi of zadatak.DecaZadaci; let iDrugi = index;"
                     [ngClass]="{'active': selectedIdxDrugi == iDrugi}">
                     <a [routerLink]="[drugi.URL_FORME]" (click)="selectItemDrugi(iDrugi)" >{{drugi.ZAD_ID}} {{drugi.NAZIV_ZAD}}</a>
@@ -69,54 +33,3 @@
     </li>
 </ul>
 
-<!--<ul class="nav nav-pills nav-stacked side-navigation">
-     <li *ngFor="let zadatak of meni; let idx = index; let frst = first" 
-         class="menu-list" [ngClass]="{'active': selectedIdx == idx}">
-         <a href="javascript:;" (click)="selectItem(idx)"> {{zadatak.NAZIV_ZAD}}</a>
-         <div *ngIf="selectedIdx == idx" >
-            <ul class="child-list">
-                <li *ngFor="let drugi of zadatak.DecaZadaci; let idrugi = index" 
-                    class="menu-list" 
-                    (click)="selectItem(idrugi)"
-                    [ngClass]="{'active': selectedDrugi == idrugi}">
-                    <a href="javascript:;" (click)="selectDrugi(idrugi)">{{drugi.ZAD_ID}} {{drugi.NAZIV_ZAD}}</a>
-                    <div *ngIf="selectedDrugi == idrugi">
-                        <ul class="child-list">
-                            <li *ngFor="let treci of drugi.DecaZadaci"
-                                class="menu-list" 
-                                [ngClass]="{active: isSelected}"
-                                (click)="onSelect()"
-                                [ngClass]="{active: isSelected}">
-                                <a href="javascript:;">{{treci.ZAD_ID}} {{treci.NAZIV_ZAD}}</a>
-                                <div *ngIf="isSelected">
-                                    <ul class="child-list">
-                                        <li *ngFor="let zad of treci.DecaZadaci">
-                                            <a href="javascript:;">{{zad.ZAD_ID}} {{zad.NAZIV_ZAD}}</a>
-                                        </li>
-                                    </ul>
-                                </div> 
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-         </div>
-     </li>
-</ul>-->
-<!--<ul>
-    <li *ngFor="let dir of directories">
-
-        <span class="iconButton" (click)="dir.toggle()">{{dir.getIcon()}}</span><input type="checkbox" [checked]="dir.checked" (click)="dir.check()" /> {{ dir.name }}
-
-        <div *ngIf="dir.expanded">
-
-            <ul>
-                <li *ngFor="let file of dir.files">{{file}}</li>
-            </ul>
-
-            <tree-view [directories]="dir.directories"></tree-view>
-
-        </div>
-
-    </li>
-</ul>-->

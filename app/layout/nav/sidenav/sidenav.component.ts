@@ -23,7 +23,7 @@ export class SidenavComponent implements OnInit {
     private selectedId: number;
     
     constructor(private _router: Router) { }
-    
+     
     ngOnInit() { }
 
 }

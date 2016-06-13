@@ -1,6 +1,6 @@
 import { IPolje } from './polje';
 import { ISadrzaj } from './sadrzaj';
-export interface IZadatak {
+export interface IZadatak { 
   SadrzajiRefTabela?: ISadrzaj[];
   Polja?: IPolje[];
   Breadcrumb: string[];

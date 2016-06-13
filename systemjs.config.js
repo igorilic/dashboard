@@ -12,8 +12,8 @@
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
     'rxjs':                       'node_modules/rxjs',
     'moment':                     'node_modules/moment/moment.js',
-      jquery:                     'node_modules/jquery/dist/jquery.min.js',
-      'ms-signalr-client':        'node_modules/ms-signalr-client/jquery.signalr-2.2.0.min.js'
+    'jquery':                     'node_modules/jquery/dist/jquery.min.js',
+    'ms-signalr-client':        'node_modules/ms-signalr-client/jquery.signalr-2.2.0.min.js'
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
@@ -32,7 +32,8 @@
     'platform-browser-dynamic',
     'router',
     'router-deprecated',
-    'upgrade',
+    'upgrade'
+    // 'core/src/facade/lang'
   ];
 
   // Individual files (~300 requests):
