@@ -6,6 +6,5 @@ export interface IMeni {
     Breadcrumb: number[];
     Depth: number;
     DecaZadaci?: IMeni[];
-
     
 }

@@ -1,14 +1,21 @@
 // angular
-import {Component, HostBinding, OnInit} from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES, Router } from '@angular/router-deprecated';
 
 // servisi
 import { SmartCardAuth } from './shared/signalr/smartcard.service';
-import { ToggleMenuService } from './layout/nav/topnav/toggle.service';
+import { ToggleMenuService } from './_portal/layout/nav/topnav/toggle.service';
 import { Subscription } from 'rxjs/Subscription';
+// redux
+// import { NgRedux, select } from 'ng2-redux';
+// import { RootState, enhancers } from './shared/store/index';
+// import { Counter } from './shared/redux/Counter'; // TODO
+// import { CounterInfo } from './shared/redux/CounterInfo'; // TODO
+// import reducer from './shared/reducers/index'; 
+// const createLogger = require('redux-logger'); 
 // komponente
-import { PortalComponent } from './layout/portal/portal.component';
-import { LoginComponent } from './layout/login/login.component';
+import { PortalComponent } from './_portal/layout/portal/portal.component';
+import { LoginComponent } from './_portal/layout/login/login.component';
 // modeli
 @Component({
     moduleId: module.id,
@@ -19,16 +26,20 @@ import { LoginComponent } from './layout/login/login.component';
     styleUrls:['app.component.css'],
     providers: [SmartCardAuth, ToggleMenuService]
 })
-@RouteConfig([
-    {path: '/login', component: LoginComponent, name: 'Login', useAsDefault: true},
-    // {path:'/...', component: AppComponent, name: 'App', useAsDefault: true},
-    {path: '/dashboard/...', component: PortalComponent, name: 'Dashboard'}
-])
+ @RouteConfig([
+     {path: '/login', component: LoginComponent, name: 'Login', useAsDefault: true},
+     // {path:'/...', component: AppComponent, name: 'App', useAsDefault: true},
+     {path: '/dashboard/...', component: PortalComponent, name: 'Dashboard'}
+ ])
 export class AppComponent implements OnInit {
     subscription: Subscription;
     @HostBinding('class.sidebar-collapsed') toggMeni: boolean = false;
     constructor(private smartCardAuth: SmartCardAuth,
-                private _toggleMenuService: ToggleMenuService) {
+                private _toggleMenuService: ToggleMenuService
+               ) {
+             
+           
+
              this.subscription = _toggleMenuService
                 .toggleAnnounced$
                 .subscribe(
@@ -42,6 +53,7 @@ export class AppComponent implements OnInit {
         
     }
 
+    
     
     
 }

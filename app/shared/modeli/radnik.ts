@@ -3,7 +3,7 @@
 import { IMeni } from './meni.interface';
 
 export interface IRadnik {
-    success?: boolean;
+    success?: string;
     
     
     
